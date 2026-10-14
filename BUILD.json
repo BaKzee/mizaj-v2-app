@@ -1,7 +1,7 @@
 {
  "app": "mizaj-v2",
- "packageVersion": "2.4.2-p3",
- "buildVersion": "0303c8806bca3762",
+ "packageVersion": "2.4.3-p3",
+ "buildVersion": "b980e56ea81ec41e",
  "files": [
   {
    "path": "./icons/icon-192.png",
@@ -250,8 +250,8 @@
   },
   {
    "path": "./js/storage/indexedDbStore.js",
-   "bytes": 9290,
-   "sha256": "5767f479214f0fe5a0dba0441ca90212c700cffe8f33a6a1791cb71a8d05da5b"
+   "bytes": 10298,
+   "sha256": "b4ba8aeb00f71c086e8da54dc325e44550d53d3a35185fc4f12db0862184c065"
   },
   {
    "path": "./js/storage/invariants.js",
@@ -265,13 +265,13 @@
   },
   {
    "path": "./js/storage/store.js",
-   "bytes": 6443,
-   "sha256": "c62471673d5bb0f65626255c7b8075a26e860947c86277d46fc7ae4e13932a9a"
+   "bytes": 7112,
+   "sha256": "2a5bb5829973de43dd919ddb4dbef747288c95aad5bd1ff5cd8fe643e09bce37"
   },
   {
    "path": "./js/ui/actions.js",
-   "bytes": 4592,
-   "sha256": "d94a1fa0cecf3522ced613047d521bcf75cc258af6b5a9b8f8cf9bd6488fa03d"
+   "bytes": 4640,
+   "sha256": "5851f7aa38798c056862901d77f897f5abf3aeb9016e20a5a52e1b6479273ef4"
   },
   {
    "path": "./js/ui/app.js",
@@ -361,7 +361,7 @@
   {
    "path": "./sw.js",
    "bytes": 3726,
-   "sha256": "3f2f27a788cda40be1b6a0acf674f6aab3ca66bebb60221c49d90d2a598714a9"
+   "sha256": "c764bef67d3c7bab2f9ed6d86536fea3ae36de144db7571ba34b6899d78cb53b"
   }
  ]
 }

@@ -124,6 +124,21 @@ export class MemoryStore {
             throw new StoreError('duplicate_seq', `seq ${entry.seq} already used`);
         this.#journal = [...this.#journal, structuredClone(entry)];
     }
+    async appendJournalBatch(entries) {
+        for (const e of entries)
+            assertEntry(e);
+        const ids = new Set(this.#journal.map((e) => e.entryId));
+        const seqs = new Set(this.#journal.map((e) => e.seq));
+        for (const e of entries) {
+            if (ids.has(e.entryId))
+                throw new StoreError('duplicate_entry', `entry ${e.entryId} already recorded`);
+            if (seqs.has(e.seq))
+                throw new StoreError('duplicate_seq', `seq ${e.seq} already used`);
+            ids.add(e.entryId);
+            seqs.add(e.seq);
+        }
+        this.#journal = [...this.#journal, ...structuredClone([...entries])];
+    }
     async mergeJournal(entries) {
         for (const e of entries)
             assertEntry(e);

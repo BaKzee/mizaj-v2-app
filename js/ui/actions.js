@@ -59,10 +59,8 @@ export async function recordObservation(app, p) {
             ledger = [...ledger, { ...ev, seq: ++maxSeq }];
         }
     }
-    for (const e of planned) {
-        await app.store.appendJournal(e);
-        app.journal = [...app.journal, e];
-    }
+    await app.store.appendJournalBatch(planned); // the observation and every deduction are stored together or not at all
+    app.journal = [...app.journal, ...planned];
     app.recompute();
     return planned;
 }

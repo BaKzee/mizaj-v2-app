@@ -164,6 +164,34 @@ export class IndexedDbStore {
             throw new StoreError(name === 'ConstraintError' ? 'duplicate_entry' : 'journal_write_failed', `journal write failed: ${String(name ?? e)}`);
         }
     }
+    async appendJournalBatch(entries) {
+        for (const e of entries)
+            assertEntry(e);
+        if (entries.length === 0)
+            return;
+        const tx = this.#db.transaction(JOURNAL, 'readwrite');
+        const done = txDone(tx);
+        const os = tx.objectStore(JOURNAL);
+        try {
+            for (const e of entries)
+                os.add(e);
+        }
+        catch (e) {
+            try {
+                tx.abort();
+            }
+            catch { /* already finished */ }
+            await done.catch(() => undefined);
+            throw new StoreError('journal_write_failed', `journal write failed: ${String(e?.name ?? e)}`);
+        }
+        try {
+            await done; // one transaction: a failed add aborts every entry of the batch
+        }
+        catch (e) {
+            const name = e?.name;
+            throw new StoreError(name === 'ConstraintError' ? 'duplicate_entry' : 'journal_write_failed', `journal write failed: ${String(name ?? e)}`);
+        }
+    }
     /** Union by entry id in one transaction; nothing already stored is changed or removed. */
     async mergeJournal(entries) {
         for (const e of entries)
