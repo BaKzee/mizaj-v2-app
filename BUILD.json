@@ -1,7 +1,7 @@
 {
  "app": "mizaj-v2",
- "packageVersion": "2.4.1-p3",
- "buildVersion": "66467245e89aefc5",
+ "packageVersion": "2.4.2-p3",
+ "buildVersion": "0303c8806bca3762",
  "files": [
   {
    "path": "./icons/icon-192.png",
@@ -305,8 +305,8 @@
   },
   {
    "path": "./js/ui/views/data.js",
-   "bytes": 15196,
-   "sha256": "1de94462667d751de899c50fbe697e3357c78ebcd3efbe6370492c918aaa6e39"
+   "bytes": 15686,
+   "sha256": "13347e5afd2160239b0e5a006390bcdf36aa86336499af98c633108340e8b4b3"
   },
   {
    "path": "./js/ui/views/home.js",
@@ -361,7 +361,7 @@
   {
    "path": "./sw.js",
    "bytes": 3726,
-   "sha256": "71862545bcf6b9b8075f11484285be7d13dd9d893a19c7b6cf7caecacf557798"
+   "sha256": "3f2f27a788cda40be1b6a0acf674f6aab3ca66bebb60221c49d90d2a598714a9"
   }
  ]
 }

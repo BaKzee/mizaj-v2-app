@@ -2,7 +2,7 @@
    Offline-first for the v2 app shell only: every file of this build is precached under a
    versioned cache; anything outside the v2 folder (e.g. the legacy app) goes to the network
    untouched, so this worker can never serve or change the legacy app. */
-const VERSION = "66467245e89aefc5";
+const VERSION = "0303c8806bca3762";
 const PRECACHE = [
  "./",
  "./icons/icon-192.png",

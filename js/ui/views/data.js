@@ -45,6 +45,8 @@ export const dataView = (app, root) => {
                     input.click();
                 } } } }, label));
     };
+    /** A v2 full backup (…​.mizaj2.jsonl) picked in the wrong place is still recognised by its content. */
+    const isV2Backup = (t) => /^\s*\{"format":"mizaj-v2-bundle"/.test(t);
     const embedded = readEmbedded();
     const legacyFiles = (() => {
         let html = embedded?.legacyHtml ?? null;
@@ -66,10 +68,17 @@ export const dataView = (app, root) => {
                 fail(x);
             }
         };
-        return h('div', null, fileButton('pick-legacy', 'اختر الملفات', '.html,.htm,.json,text/html,application/json', async (files) => {
+        return h('div', null, fileButton('pick-legacy', 'اختر الملفات', '', async (files) => {
             try {
                 for (const f of files) {
                     const t = await readFileText(f);
+                    if (isV2Backup(t)) {
+                        busy(true, 'هذا ملف نسخة v2؛ أتحقق منه…');
+                        const p = app.previewFromBackup(t);
+                        busy(false);
+                        previewSheet(app, p);
+                        return;
+                    }
                     if (/^\s*</.test(t))
                         html = t;
                     else
@@ -99,7 +108,7 @@ export const dataView = (app, root) => {
             }
             catch (x) {
                 fail(x);
-            } } } }, 'أعد تحميل البيانات المضمّنة')) : null, h('div', { class: 'import-opt' }, h('h3', { class: 'sub-title' }, 'من نسخة v2 احتياطية'), h('p', { class: 'hint' }, 'ملف ‎.mizaj2.jsonl: يستعيد البيانات وما أضفته في v2 وحزمة المعرفة إن وُجدت. لا يُحذف شيء موجود.'), fileButton('pick-backup', 'اختر النسخة', '.jsonl,.mizaj2.jsonl,application/x-ndjson,text/plain', async ([f]) => {
+            } } } }, 'أعد تحميل البيانات المضمّنة')) : null, h('div', { class: 'import-opt' }, h('h3', { class: 'sub-title' }, 'من نسخة v2 احتياطية'), h('p', { class: 'hint' }, 'ملف ‎.mizaj2.jsonl (اختره من «كل الملفات»؛ لا يهم الامتداد): يستعيد البيانات وما أضفته في v2 وحزمة المعرفة إن وُجدت. لا يُحذف شيء موجود.'), fileButton('pick-backup', 'اختر النسخة', '', async ([f]) => {
         try {
             busy(true, 'أتحقق من الملف…');
             const p = app.previewFromBackup(await readFileText(f));
