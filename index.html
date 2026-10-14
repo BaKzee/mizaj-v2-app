@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#1A1512">
+<meta name="description" content="مِزاج v2: اقتراحات خلطات مبنية على وصفاتك المسجّلة، مع الدليل والمجهول. يعمل بلا اتصال.">
+<title>مِزاج v2</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="js/ui/main.js"></script>
+</head>
+<body>
+<a class="skip" href="#/" id="skip">تخطَّ إلى المحتوى</a>
+<header class="top">
+  <span class="wordmark" aria-label="مِزاج">مِزاج</span><span class="ver">v2</span>
+  <a id="data-link" class="icon-btn" href="#/data" aria-label="البيانات والإعدادات"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c4.4 0 8 1.3 8 3v12c0 1.7-3.6 3-8 3s-8-1.3-8-3V6c0-1.7 3.6-3 8-3zM4 6c0 1.7 3.6 3 8 3s8-1.3 8-3M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></a>
+</header>
+<main id="main" tabindex="-1" aria-busy="true"><p class="loading">جارٍ التحميل…</p></main>
+<nav id="tabs" class="tabs" aria-label="التنقل الرئيسي"></nav>
+<div id="live" class="sr-only" aria-live="polite"></div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<noscript><p class="loading">يحتاج مِزاج v2 إلى تفعيل JavaScript. التطبيق القديم متاح على <a href="../index.html">الصفحة الأصلية</a>.</p></noscript>
+</body>
+</html>
